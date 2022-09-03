@@ -42,6 +42,3 @@ class CaesarCipher
     end
   end
 end
-
-cc = CaesarCipher.new
-cc.caesar_cipher('What a string!', 5)
