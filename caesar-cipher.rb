@@ -13,9 +13,12 @@ class CaesarCipher
   def get_ascii_code(characters, shift)
     characters.map do |character|
       number = character.ord
-      if lowercase_letter?(number) || uppercase_letter?(number)
+      if lowercase_letter?(number)
         number += shift
-        correct_shift(number)
+        correct_shift_lowercase(number)
+      elsif uppercase_letter?(number)
+        number += shift
+        correct_shift_uppercase(number)
       else
         number
       end
@@ -34,11 +37,15 @@ class CaesarCipher
     false
   end
 
-  def correct_shift(number)
-    if number > 122 || number > 90 && number < 97
-      number -= 26
-    else
-      number
-    end
+  def correct_shift_lowercase(number)
+    number -= 26 unless lowercase_letter?(number)
+
+    number
+  end
+
+  def correct_shift_uppercase(number)
+    number -= 26 unless uppercase_letter?(number)
+
+    number
   end
 end

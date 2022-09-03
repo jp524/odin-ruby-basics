@@ -15,6 +15,10 @@ describe CaesarCipher do
     expect(cc.caesar_cipher('  %^@ /!', 2)).to eql('  %^@ /!')
   end
 
+  it "returns a cipher if the letter is close to the end of the alphabet" do
+    expect(cc.caesar_cipher('Z', 10)).to eql('J')
+  end
+
   it "returns a cipher if the letters are close to the end of the alphabet" do
     expect(cc.caesar_cipher('ZbY', 10)).to eql('JlI')
   end
